@@ -1,0 +1,17 @@
+/* Custom color definition for easy reuse */
+:root {
+    --gc-green: #7CB042; /* The required green color */
+}
+.text-gc-green { color: var(--gc-green); }
+.bg-gc-green { background-color: var(--gc-green); }
+.border-gc-green { border-color: var(--gc-green); }
+
+/* Apply Inter font family */
+body {
+    /* Note: 'Inter' font is imported via Google Fonts link in the HTML header */
+    font-family: 'Inter', sans-serif;
+    background-color: #f7f7f7;
+}
+
+/* Smooth transition for hover effects */
+.transition-all { transition: all 0.3s ease; }

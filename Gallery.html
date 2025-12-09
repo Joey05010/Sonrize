@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sonrize Consultancy | Placement Gallery</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom brand color for Tailwind */
+        :root {
+            --color-brand-green: #7CB042;
+        }
+        .bg-brand-green {
+            background-color: var(--color-brand-green);
+        }
+        .text-brand-green {
+            color: var(--color-brand-green);
+        }
+        .hover\:bg-brand-darker:hover {
+            background-color: #699738; /* A slightly darker shade for hover effect */
+        }
+        .shadow-brand {
+            box-shadow: 0 10px 15px -3px rgba(124, 176, 66, 0.3), 0 4px 6px -2px rgba(124, 176, 66, 0.15);
+        }
+        /* Inter font family */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f7f7;
+        }
+        /* Smooth scrolling for internal links */
+        html {
+            scroll-behavior: smooth;
+        }
+        /* Style for the placement cards */
+        .placement-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .placement-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px -5px rgba(0, 0, 0, 0.1), 0 5px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        /* Fallback background color if image is missing */
+        .placement-card-bg-fallback {
+            background-color: #4f46e5; /* Primary color fallback */
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="text-gray-800">
+
+    <!-- Header & Navigation (Copied from index.html, links updated to point to the correct page) -->
+    <header class="sticky top-0 z-50 bg-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4 md:justify-start md:space-x-10">
+                <!-- Logo -->
+                <div class="flex justify-start lg:w-0 lg:flex-1">
+                    <a href="index.html#hero" class="flex items-center space-x-2">
+                        <img src="./assets/logo.svg" 
+                             alt="Global Compass Logo" 
+                             class="h-8 w-auto text-brand-green"
+                             onerror="this.onerror=null; this.src='https://placehold.co/32x32/7CB042/FFFFFF?text=GC';" 
+                        />
+                        <span class="text-xl font-bold text-gray-900">Sonrize Consultancy</span>
+                    </a>
+                </div>
+
+                <!-- Navigation Links (Desktop) -->
+                <nav class="hidden md:flex space-x-10">
+                    <!-- Links point to anchors on the index.html page -->
+                    <a href="index.html#hero" class="text-base font-medium text-gray-500 hover:text-gray-900 transition duration-150">Home</a>
+                    <a href="index.html#about" class="text-base font-medium text-gray-500 hover:text-gray-900 transition duration-150">About Us</a>
+                    <a href="index.html#services" class="text-base font-medium text-gray-500 hover:text-gray-900 transition duration-150">Services</a>
+                    <a href="#" class="text-base font-bold text-brand-green transition duration-150">Gallery</a>
+                </nav>
+
+                <!-- Contact CTA Button (Desktop) -->
+                <div class="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
+                    <a href="index.html#contact" class="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-lg shadow-brand text-base font-medium text-white bg-brand-green hover:bg-brand-darker transition duration-200">
+                        Contact
+                    </a>
+                </div>
+                
+                <!-- Mobile Menu Button (Hamburger) -->
+                <div class="-mr-2 -my-2 md:hidden">
+                    <button type="button" id="mobile-menu-button" class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-brand-green" aria-expanded="false">
+                        <span class="sr-only">Open main menu</span>
+                        <!-- Hamburger Icon -->
+                        <svg id="menu-icon-open" class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                        <!-- Close Icon (Initially hidden) -->
+                        <svg id="menu-icon-close" class="h-6 w-6 hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile Menu Dropdown (Initially hidden on all screens, but shown on small screens when toggled) -->
+            <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg border-t border-gray-200">
+                <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                    <a href="index.html#hero" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 transition duration-150">Home</a>
+                    <a href="index.html#about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 transition duration-150">About Us</a>
+                    <a href="index.html#services" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 transition duration-150">Services</a>
+                    <a href="#" class="block px-3 py-2 rounded-md text-base font-bold text-brand-green bg-gray-50 transition duration-150">Gallery</a>
+                </div>
+                <div class="pt-4 pb-3 border-t border-gray-200">
+                    <div class="px-5">
+                        <a href="index.html#contact" class="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-lg shadow-sm text-base font-medium text-white bg-brand-green hover:bg-brand-darker transition duration-300">
+                            Contact
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Gallery Header -->
+        <section class="bg-white pt-16 pb-12 sm:pt-24 sm:pb-16 shadow-inner">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h1 class="text-5xl font-extrabold tracking-tight text-gray-900 sm:text-6xl">
+                    Our Global Placement Success
+                </h1>
+                <p class="mt-4 text-xl text-gray-500 max-w-3xl mx-auto">
+                    Explore detailed stories of professionals who successfully transitioned to exciting new careers worldwide with the guidance of Global Compass.
+                </p>
+            </div>
+        </section>
+
+        <!-- Detailed Placement Grid -->
+        <section id="placement-stories" class="py-16 sm:py-24 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    
+                    <!-- Story 1: Tech Lead in Berlin (Sophia) -->
+                    <div class="placement-card bg-white rounded-xl shadow-lg overflow-hidden border-t-8 border-brand-green">
+                        <!-- Updated to use relative path for Sophia's image -->
+                        <div class="h-48 bg-cover bg-center text-white p-6 flex flex-col justify-end placement-card-bg-fallback" style="background-image: url('./assets/sophia-berlin.jpg');">
+                            <span class="text-sm font-semibold tracking-wider uppercase text-gray-100 bg-black/50 inline-block px-2 py-1 rounded-full w-fit">Tech & Startups</span>
+                            <h3 class="text-2xl font-bold mt-2">Sophia's Leap from Seattle to Berlin</h3>
+                        </div>
+                        <div class="p-6 space-y-4">
+                            <p class="text-sm text-brand-green font-semibold">Senior Software Engineering Lead</p>
+                            <!-- Enhanced Success Story -->
+                            <p class="text-gray-700">"Moving to Europe seemed impossible due to the complex regulatory environment, but Global Compass found me a perfect role and negotiated a highly competitive package in German currency. The visa and initial setup support was flawless, allowing me to focus on my new role immediately."</p>
+                            <div class="flex items-center space-x-2 text-gray-500 text-sm">
+                                <svg class="h-5 w-5 text-brand-green" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /></svg>
+                                <span>Berlin, Germany</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Story 2: Financial Analyst in Singapore (David) -->
+                    <div class="placement-card bg-white rounded-xl shadow-lg overflow-hidden border-t-8 border-brand-green">
+                        <!-- Updated to use relative path for David's image -->
+                        <div class="h-48 bg-cover bg-center text-white p-6 flex flex-col justify-end placement-card-bg-fallback" style="background-image: url('./assets/david-singapore.jpg');">
+                            <span class="text-sm font-semibold tracking-wider uppercase text-gray-100 bg-black/50 inline-block px-2 py-1 rounded-full w-fit">Finance & Banking</span>
+                            <h3 class="text-2xl font-bold mt-2">David's Pivot to the APAC Market</h3>
+                        </div>
+                        <div class="p-6 space-y-4">
+                            <p class="text-sm text-brand-green font-semibold">Senior Investment Analyst</p>
+                            <!-- Enhanced Success Story -->
+                            <p class="text-gray-700">"I wanted exposure to the fast-paced APAC financial market. Global Compass connected me directly with hiring managers at a top-tier bank and provided essential coaching on regional business etiquette and cultural fit. Their guidance was instrumental in securing this pivotal role."</p>
+                            <div class="flex items-center space-x-2 text-gray-500 text-sm">
+                                <svg class="h-5 w-5 text-brand-green" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /></svg>
+                                <span>Singapore</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Story 3: Civil Engineer in Sydney (Maria) -->
+                    <div class="placement-card bg-white rounded-xl shadow-lg overflow-hidden border-t-8 border-brand-green">
+                        <!-- Updated to use relative path for Maria's image -->
+                        <div class="h-48 bg-cover bg-center text-white p-6 flex flex-col justify-end placement-card-bg-fallback" style="background-image: url('./assets/maria-sydney.jpg');">
+                            <span class="text-sm font-semibold tracking-wider uppercase text-gray-100 bg-black/50 inline-block px-2 py-1 rounded-full w-fit">Engineering & Construction</span>
+                            <h3 class="text-2xl font-bold mt-2">Maria Secures Lead Role in Sydney</h3>
+                        </div>
+                        <div class="p-6 space-y-4">
+                            <p class="text-sm text-brand-green font-semibold">Lead Civil Engineer</p>
+                            <!-- Enhanced Success Story -->
+                            <p class="text-gray-700">"I received multiple offers thanks to their extensive network in the Australian infrastructure sector. They didn't just find a job; they assisted my family with the complex relocation logistics and ensured I was prepared to lead a high-profile government project immediately."</p>
+                            <div class="flex items-center space-x-2 text-gray-500 text-sm">
+                                <svg class="h-5 w-5 text-brand-green" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /></svg>
+                                <span>Sydney, Australia</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Story 4: Marketing Manager in Dubai (Ahmed) -->
+                    <div class="placement-card bg-white rounded-xl shadow-lg overflow-hidden border-t-8 border-brand-green">
+                        <!-- Updated to use relative path for Ahmed's image -->
+                        <div class="h-48 bg-cover bg-center text-white p-6 flex flex-col justify-end placement-card-bg-fallback" style="background-image: url('./assets/ahmed-dubai.jpg');">
+                            <span class="text-sm font-semibold tracking-wider uppercase text-gray-100 bg-black/50 inline-block px-2 py-1 rounded-full w-fit">Marketing & Strategy</span>
+                            <h3 class="text-2xl font-bold mt-2">Ahmed's Rapid Rise in the UAE</h3>
+                        </div>
+                        <div class="p-6 space-y-4">
+                            <p class="text-sm text-brand-green font-semibold">Regional Marketing Manager</p>
+                            <!-- Enhanced Success Story -->
+                            <p class="text-gray-700">"The transition from Cairo to Dubai was incredibly smooth and efficient. Global Compass coached me specifically on high-level salary negotiation and regional contract norms, which was absolutely crucial for securing my accelerated path to Regional Marketing Manager."</p>
+                            <div class="flex items-center space-x-2 text-gray-500 text-sm">
+                                <svg class="h-5 w-5 text-brand-green" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /></svg>
+                                <span>Dubai, UAE</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Story 5: Healthcare Executive in Dublin (Liam) -->
+                    <div class="placement-card bg-white rounded-xl shadow-lg overflow-hidden border-t-8 border-brand-green">
+                        <!-- Updated to use relative path for Liam's image -->
+                        <div class="h-48 bg-cover bg-center text-white p-6 flex flex-col justify-end placement-card-bg-fallback" style="background-image: url('./assets/liam-dublin.jpg');">
+                            <span class="text-sm font-semibold tracking-wider uppercase text-gray-100 bg-black/50 inline-block px-2 py-1 rounded-full w-fit">Healthcare Management</span>
+                            <h3 class="text-2xl font-bold mt-2">Liam's Executive Move to Dublin</h3>
+                        </div>
+                        <div class="p-6 space-y-4">
+                            <p class="text-sm text-brand-green font-semibold">Chief Operations Officer (COO)</p>
+                            <!-- Enhanced Success Story -->
+                            <p class="text-gray-700">"Moving at a COO level across continents is complex. Global Compass’s discreet and professional handling of the entire executive search process—including navigating the intricacies of the EU healthcare system—was exceptional. My dream move became a flawless reality."</p>
+                            <div class="flex items-center space-x-2 text-gray-500 text-sm">
+                                <svg class="h-5 w-5 text-brand-green" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /></svg>
+                                <span>Dublin, Ireland</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Story 6: Renewable Energy Expert in Amsterdam (Lena) -->
+                    <div class="placement-card bg-white rounded-xl shadow-lg overflow-hidden border-t-8 border-brand-green">
+                        <!-- Updated to use relative path for Lena's image -->
+                        <div class="h-48 bg-cover bg-center text-white p-6 flex flex-col justify-end placement-card-bg-fallback" style="background-image: url('./assets/lena-amsterdam.jpg');">
+                            <span class="text-sm font-semibold tracking-wider uppercase text-gray-100 bg-black/50 inline-block px-2 py-1 rounded-full w-fit">Renewable Energy</span>
+                            <h3 class="text-2xl font-bold mt-2">Lena's Niche Expertise in Amsterdam</h3>
+                        </div>
+                        <div class="p-6 space-y-4">
+                            <p class="text-sm text-brand-green font-semibold">Senior Sustainability Consultant</p>
+                            <!-- Enhanced Success Story -->
+                            <p class="text-gray-700">"I was specifically looking for a role focused on offshore wind projects. They sourced a pivotal role that wasn't publicly advertised and perfectly aligned with my niche expertise. The team even provided dedicated housing assistance in Amsterdam's competitive market."</p>
+                            <div class="flex items-center space-x-2 text-gray-500 text-sm">
+                                <svg class="h-5 w-5 text-brand-green" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /></svg>
+                                <span>Amsterdam, Netherlands</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer CTA -->
+                <div class="text-center mt-20 p-10 bg-white rounded-xl shadow-xl">
+                    <h2 class="text-3xl font-extrabold text-gray-900">Ready to Be Our Next Success Story?</h2>
+                    <p class="mt-3 text-lg text-gray-600">
+                        Your international career is waiting. Reach out today and start planning your global move.
+                    </p>
+                    <a href="index.html#contact" class="mt-6 inline-flex items-center justify-center px-8 py-4 border border-transparent text-lg font-bold rounded-xl shadow-brand text-white bg-brand-green hover:bg-brand-darker transition duration-300 transform hover:scale-[1.02]">
+                        Schedule Your Free Consultation
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 py-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-400">
+            <p>&copy; 2025 Sonrize Consultancy. All rights reserved. | International Placement Specialists</p>
+            <div class="mt-4 space-x-4 text-sm">
+                <a href="index.html#" class="hover:text-white transition duration-150">Privacy Policy</a>
+                <a href="index.html#" class="hover:text-white transition duration-150">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Mobile Menu Toggle -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const button = document.getElementById('mobile-menu-button');
+            const menu = document.getElementById('mobile-menu');
+            const openIcon = document.getElementById('menu-icon-open');
+            const closeIcon = document.getElementById('menu-icon-close');
+            
+            // Toggle menu visibility and change icon
+            button.addEventListener('click', () => {
+                const isHidden = menu.classList.toggle('hidden');
+                
+                if (isHidden) {
+                    openIcon.classList.remove('hidden');
+                    closeIcon.classList.add('hidden');
+                } else {
+                    openIcon.classList.add('hidden');
+                    closeIcon.classList.remove('hidden');
+                }
+            });
+
+            // Close menu on link click (for smooth scrolling behavior)
+            const mobileLinks = menu.querySelectorAll('a[href^="index.html#"], a[href="#"]');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    // Only close if it's not the current page anchor
+                    if (link.getAttribute('href') !== '#') {
+                        menu.classList.add('hidden');
+                        openIcon.classList.remove('hidden');
+                        closeIcon.classList.add('hidden');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
